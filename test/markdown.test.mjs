@@ -17,6 +17,8 @@ test("asterisks and underscores render bold and italic", () => {
   assert.equal(md("*italic*"), "<em>italic</em>");
   assert.equal(md("_italic_"), "<em>italic</em>");
   assert.equal(md("**bold `code`**"), "<strong>bold <code>code</code></strong>");
+  assert.equal(md("my_variable_name"), "my_variable_name");
+  assert.equal(md("a _real_ emphasis"), "a <em>real</em> emphasis");
 });
 
 test("links render as anchors, unsafe URLs stay literal", () => {

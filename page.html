@@ -257,7 +257,7 @@ const md = (s) => {
   const formatted = linked
     .replace(/\*\*([^*]+?)\*\*/g, (_, b) => `<strong>${b}</strong>`)
     .replace(/\*([^*]+?)\*/g, (_, i) => `<em>${i}</em>`)
-    .replace(/_([^_]+?)_/g, (_, i) => `<em>${i}</em>`);
+    .replace(/(^|\W)_([^_]+?)_(\W|$)/g, (_, pre, i, post) => `${pre}<em>${i}</em>${post}`);
   return formatted.replace(/\0CODE(\d+)\0/g, (_, n) => codes[Number(n)]);
 };
 const WORKING_GRACE_MS = 5 * 60 * 1000;
